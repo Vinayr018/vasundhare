@@ -1,10 +1,14 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
 import './globals.css'
 
+const display = Cormorant_Garamond({ subsets: ['latin'], variable: '--font-display' })
+const sans = DM_Sans({ subsets: ['latin'], variable: '--font-body' })
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'Vasundhare — Rooted in Nature',
+  description: 'Purposeful everyday rituals, thoughtfully sourced from the living earth.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -39,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${display.variable} ${sans.variable}`}>
       <body className="antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
